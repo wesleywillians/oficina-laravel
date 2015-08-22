@@ -9,17 +9,13 @@
 <h1>Edit: {{$book->title}}</h1>
 
 <form method="post" action="/books/update/{{$book->id}}">
-    {!! csrf_field() !!}
+    {!! Form::model($book, ['route'=>['book.update', $book->id]]) !!}
 
-    {!! Form::label('title','Title')  !!}
-    {!! Form::text('title', $book->title, ['class'=>'form-control']) !!}
-    <br>
-    {!! Form::label('description','Description')  !!}
-    {!! Form::textarea('description', $book->description, ['class'=>'form-control']) !!}
-    <br>
+    @include('book._form')
 
     <input type="submit" value="Update book">
-</form>
+
+    {!! Form::close() !!}
 
 </body>
 </html>

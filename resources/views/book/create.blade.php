@@ -8,18 +8,12 @@
 
 <h1>Create a new book</h1>
 
-<form method="post" action="/books/store">
-    {!! csrf_field() !!}
+    {!! Form::open(['route'=>'book.store']) !!}
 
-    {!! Form::label('title','Title')  !!}
-    {!! Form::text('title', null, ['class'=>'form-control']) !!}
-    <br>
-    {!! Form::label('description','Description')  !!}
-    {!! Form::textarea('description', null, ['class'=>'form-control']) !!}
-    <br>
+    @include('book._form')
 
     <input type="submit" value="Create book">
-</form>
+{!! Form::close() !!}
 
 </body>
 </html>

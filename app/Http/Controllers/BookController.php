@@ -43,7 +43,7 @@ class BookController extends Controller
     {
         $book = new \App\Book;
         $book = $book->find($id)->update($request->all());
-        return redirect('books');
+        return redirect()->route('book.index');
     }
 
     public function delete($id)
