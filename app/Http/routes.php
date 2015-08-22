@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/ola', 'OlaController@index');
+Route::get('/books', 'BookController@index');
