@@ -13,6 +13,22 @@ class BookController extends Controller
     {
         //$book = new \App\Book();
         $books = \App\Book::all();
-        return view('books', ['books' => $books]);
+
+        return view('book.books', ['books' => $books]);
+    }
+
+    public function create()
+    {
+        return view('book.create');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $book = new \App\Book;
+        $book->create($data);
+
+        return redirect('books');
+
     }
 }
