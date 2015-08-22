@@ -29,6 +29,29 @@ class BookController extends Controller
         $book->create($data);
 
         return redirect('books');
+    }
+
+    public function edit($id)
+    {
+        $book = new \App\Book;
+        $book = $book->find($id);
+
+        return view('book.edit', ['book' => $book]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $book = new \App\Book;
+        $book = $book->find($id)->update($request->all());
+        return redirect('books');
+    }
+
+    public function delete($id)
+    {
+        $book = new \App\Book;
+        $book->find($id)->delete();
+
+        return redirect('books');
 
     }
 }

@@ -19,3 +19,6 @@ Route::get('/ola', 'OlaController@index');
 Route::get('/books', 'BookController@index');
 Route::get('/books/create', 'BookController@create');
 Route::post('/books/store', 'BookController@store');
+Route::get('/books/delete/{id}', 'BookController@delete');
+Route::get('/books/edit/{id}', 'BookController@edit');
+Route::post('/books/update/{id}', 'BookController@update');
