@@ -28,7 +28,7 @@ class BookController extends Controller
         $book = new \App\Book;
         $book->create($data);
 
-        return redirect('books');
+        return redirect()->route('books.index');
     }
 
     public function edit($id)
@@ -43,7 +43,7 @@ class BookController extends Controller
     {
         $book = new \App\Book;
         $book = $book->find($id)->update($request->all());
-        return redirect()->route('book.index');
+        return redirect()->route('books.index');
     }
 
     public function delete($id)
@@ -51,7 +51,7 @@ class BookController extends Controller
         $book = new \App\Book;
         $book->find($id)->delete();
 
-        return redirect('books');
+        return redirect()->route('books.index');
 
     }
 }

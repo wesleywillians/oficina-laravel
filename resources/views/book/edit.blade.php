@@ -1,21 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create a new book</title>
-</head>
-<body>
+@extends('books')
 
-<h1>Edit: {{$book->title}}</h1>
+@section('content')
 
-<form method="post" action="/books/update/{{$book->id}}">
-    {!! Form::model($book, ['route'=>['book.update', $book->id]]) !!}
+	<h1>Edit: {{$book->title}}</h1>
 
-    @include('book._form')
+    {!! Form::model($book, ['route'=>['books.update', $book->id]]) !!}
 
-    <input type="submit" value="Update book">
+    	@include('book._form')
+
+    	<input type="submit" class="btn btn-warning" value="Update book">
 
     {!! Form::close() !!}
-
-</body>
-</html>
+@stop
