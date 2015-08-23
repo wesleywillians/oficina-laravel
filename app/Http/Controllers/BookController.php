@@ -6,13 +6,20 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Contracts\RepositoryInterface;
 
 class BookController extends Controller
 {
+    protected $book;
+
+    public function __construct(RepositoryInterface $book)
+    {
+        $this->book = $book;
+    }
+
     public function index()
     {
-        //$book = new \App\Book();
-        $books = \App\Book::all();
+        $books = $this->book->all();
 
         return view('book.books', ['books' => $books]);
     }
@@ -24,32 +31,27 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
-        $book = new \App\Book;
-        $book->create($data);
+        $this->book->create($request);
 
         return redirect()->route('books.index');
     }
 
     public function edit($id)
     {
-        $book = new \App\Book;
-        $book = $book->find($id);
+        $book = $this->book->find($id);
 
         return view('book.edit', ['book' => $book]);
     }
 
     public function update(Request $request, $id)
     {
-        $book = new \App\Book;
-        $book = $book->find($id)->update($request->all());
+        $this->book->update($request, $id);
         return redirect()->route('books.index');
     }
 
     public function delete($id)
     {
-        $book = new \App\Book;
-        $book->find($id)->delete();
+        $this->book->delete($id);
 
         return redirect()->route('books.index');
 
