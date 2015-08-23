@@ -8,6 +8,7 @@
 
     	@include('book._form')
 
-    	<input type="submit" class="btn btn-primary" value="Create book">
+    	<input type="submit" class="btn btn-primary pull-left" value="Create book">
 	{!! Form::close() !!}
+	<a href="{!! route('books.index') !!}" class="btn"> <- Back</a>
 @stop

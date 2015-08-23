@@ -8,7 +8,8 @@
 
     	@include('book._form')
 
-    	<input type="submit" class="btn btn-warning" value="Update book">
+    	<input type="submit" class="btn btn-warning pull-left" value="Update book">
 
     {!! Form::close() !!}
+    <a href="{!! route('books.index') !!}" class="btn"> <- Back</a>
 @stop
