@@ -1,19 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create a new book</title>
-</head>
-<body>
+@extends('books')
 
-<h1>Create a new book</h1>
+@section('content')
 
-    {!! Form::open(['route'=>'book.store']) !!}
+	<h1>Create a new book</h1>
 
-    @include('book._form')
+    {!! Form::open(['route' => 'books.store']) !!}
 
-    <input type="submit" value="Create book">
-{!! Form::close() !!}
+    	@include('book._form')
 
-</body>
-</html>
+    	<input type="submit" class="btn btn-primary pull-left" value="Create book">
+	{!! Form::close() !!}
+	<a href="{!! route('books.index') !!}" class="btn"> <- Back</a>
+@stop

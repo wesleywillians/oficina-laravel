@@ -1,18 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>books</title>
-</head>
-<body>
-<h1>Books</h1>
+@extends('books')
 
-<a href="/books/create">Create new book</a>
-<br>
-<ul>
-    @foreach($books as $book)
-        <li>{{$book->title}} - <a href="/books/delete/{{$book->id}}">Delete</a></li>
-    @endforeach
-</ul>
-</body>
-</html>
+@section('content')
+	<h1>Books</h1>
+
+	<a href="{!! route('books.create') !!}" class="btn btn-primary pull-right">Novo livro</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Titulo</th>
+				<th class="text-center">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+		    @foreach($books as $book)
+				<tr>
+					<td>{{$book->title}}</td>
+					<td class="text-center">
+						<a href="{!! route('books.delete', $book->id) !!}" class="btn btn-danger">Delete</a>
+						<a href="{!! route('books.edit', $book->id) !!}" class="btn btn-warning">Atualizar</a>
+					</td>
+				</tr>
+		    @endforeach
+		</tbody>
+	</table>
+
+@stop

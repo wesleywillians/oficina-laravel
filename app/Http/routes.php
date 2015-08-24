@@ -14,12 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/ola', 'OlaController@index');
-Route::get('/books', ['as'=>'book.index', 'uses'=> 'BookController@index']);
-Route::get('/books/create', 'BookController@create');
-Route::post('/books/store', ['as'=>'book.store', 'uses'=> 'BookController@store']);
 
-Route::get('/books/delete/{id}', 'BookController@delete');
-Route::get('/books/edit/{id}', 'BookController@edit');
-Route::post('/books/update/{id}', ['as'=>'book.update', 'uses'=> 'BookController@update']);
+/**
+ * Cria um prefixo para um conjunto de rotas
+ *
+*/
+Route::group(['prefix' => 'books'], function() {
+
+	Route::get('', ['as'=>'books.index', 'uses'=> 'BookController@index']);
+	Route::get('create', ['as' => 'books.create', 'uses' => 'BookController@create']);
+	Route::post('store', ['as'=>'books.store', 'uses'=> 'BookController@store']);
+	Route::get('delete/{id}', ['as' => 'books.delete', 'uses' => 'BookController@delete']);
+	Route::get('edit/{id}', ['as' => 'books.edit', 'uses' => 'BookController@edit']);
+	Route::post('update/{id}', ['as'=>'books.update', 'uses'=> 'BookController@update']);
+
+});
+
