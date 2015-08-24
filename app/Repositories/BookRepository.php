@@ -4,9 +4,9 @@ namespace App\Repositories;
 
 use Illuminate\Http\Request;
 use App\Entities\Book;
-use App\Contracts\RepositoryInterface;
+use App\Contracts\BookRepositoryInterface;
 
-class BookRepository implements RepositoryInterface
+class BookRepository implements BookRepositoryInterface
 {
 	protected $book;
 

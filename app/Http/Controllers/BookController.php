@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Contracts\RepositoryInterface;
+use App\Contracts\BookRepositoryInterface;
 
 class BookController extends Controller
 {
     protected $book;
 
-    public function __construct(RepositoryInterface $book)
+    public function __construct(BookRepositoryInterface $book)
     {
         $this->book = $book;
     }

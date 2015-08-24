@@ -4,7 +4,7 @@ namespace App\Contracts;
 
 use Illuminate\Http\Request;
 
-interface RepositoryInterface
+interface BaseRepositoryInterface
 {
 	public function all();
 
